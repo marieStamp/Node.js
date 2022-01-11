@@ -1,0 +1,46 @@
+// в терминале вводить: npm run start 30, 150 (любые числа или значения вместо этих)
+
+let colors = require("colors");
+
+const primes = [];
+
+const primesArr = () => {
+    nextPrime:
+    for (let i = +process.argv[2]; i <= +process.argv[3]; i++) {
+        if (i < 2) continue nextPrime;
+
+        for (let j = 2; j < i; j++) {
+            if (i % j == 0) continue nextPrime;
+        }
+        primes.push(i);
+    }
+};
+
+const primesColors = () => {
+    let counter = 0;
+
+    if (primes.length) {
+        primes.forEach(el => {
+            if (counter === 0) {
+                console.log( colors.green(el) );
+                counter++;
+            } else if (counter === 1) {
+                console.log( colors.yellow(el) );
+                counter++;
+            } else {
+                console.log( colors.red(el) );
+                counter = 0;
+            }
+        });
+    } else {
+        console.log(colors.red('There are no prime numbers'))
+    }
+};
+
+if (isNaN(+process.argv[2]) || isNaN(+process.argv[3])) {
+    console.log(colors.red('Please, enter a number!'));
+    return;
+} else {
+    primesArr();
+    primesColors();
+}
