@@ -8,8 +8,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
+  "bin": {
+    "reader": "hw4.js"
+  },
   "license": "ISC",
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "inquirer": "^8.2.0",
+    "moment": "^2.29.1",
+    "yargs": "^17.3.1"
   }
 }
